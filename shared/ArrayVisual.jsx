@@ -10,11 +10,12 @@ function defaultArray() {
 
 function useOrdering() {
 	const [array, setArray] = useState([...defaultArray()]);
+	const [myInterval, setMyInterval] = useState(null)
 	function startOrder() {
 
 		let index = 0;
 		let swapped = false;
-		let myInterval = setInterval(() => {
+		let int = setInterval(() => {
 			if (array[index - 1]) {
 				array[index - 1].color = "white"
 			}
@@ -35,14 +36,17 @@ function useOrdering() {
 				setArray([...array])
 
 				if (!swapped) {
-					clearInterval(myInterval);
+					clearInterval(int);
 				}
 				swapped = false
 			}
-		}, 50);
+		}, 50)
+
+		setMyInterval(int);
 	}
 
 	function reset() {
+		clearInterval(myInterval);
 		setArray([...defaultArray()])
 	}
 

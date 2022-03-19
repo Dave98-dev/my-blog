@@ -1,7 +1,11 @@
 import css from './ArrayVisual.module.css'
 import { useState, useReducer } from 'react';
 
-const defaultArray = () => [12, 5, 6, 1, 15, 14, 18, 13, 7, 17, 2, 11, 19, 8, 10, 16, 9, 3, 4, 20].map(x => ({ val: x, color: "white" }))
+function defaultArray() {
+	return Array.from({ length: 20 }, (_, i) => i + 1)
+		.sort(() => Math.random() - 0.5)
+		.map(x => ({ val: x, color: "white" }));
+}
 
 
 function useOrdering() {
@@ -50,7 +54,7 @@ export function ArrayVisual() {
 
 	return (<>
 		<button className={css.button} onClick={startOrder}>Ordina</button>
-		<button className={css.button} onClick={reset}>Reset</button>
+		<button className={css.button} onClick={reset}>Shuffle</button>
 		<br />
 		<div className={css.container}>
 			{array.map((x) => (<div key={x.val} className={css.listItem} style={{ ["--val"]: x.val, backgroundColor: x.color }}>{x.val}</div>))}

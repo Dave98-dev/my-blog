@@ -1,5 +1,6 @@
 import css from './ArrayVisual.module.css'
 import { useState, useReducer } from 'react';
+import { useEffect } from 'react/cjs/react.production.min';
 
 function defaultArray() {
 	return Array.from({ length: 20 }, (_, i) => i + 1)
@@ -56,12 +57,14 @@ function useOrdering() {
 export function ArrayVisual() {
 	const { startOrder, reset, array } = useOrdering();
 
+	useEffect(() => { reset(); }, [])
+
 	return (<>
 		<button className={css.button} onClick={startOrder}>Ordina</button>
 		<button className={css.button} onClick={reset}>Shuffle</button>
 		<br />
 		<div className={css.container}>
-			{array.map((x) => (<div key={x.val} className={css.listItem} style={{ ["--val"]: x.val, backgroundColor: x.color }}>{x.val}</div>))}
+			{array.map((x, index) => (<div key={index} className={css.listItem} style={{ ["--val"]: x.val, backgroundColor: x.color }}>{x.val}</div>))}
 		</div>
 	</>);
 }

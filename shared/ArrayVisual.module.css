@@ -1,0 +1,24 @@
+.button{
+	background: gray; 
+	padding: 3px; 
+	border-radius: 5px;
+	border: 1px solid black;
+	margin: 2px;
+}
+
+.container{
+	display: flex;
+	width: 100%;
+	justify-content:space-evenly;
+	height: 500px;
+	align-items: flex-end;
+	background-color: black;
+}
+
+.listItem{
+	--val:2;
+	width: 100%;
+	height: calc(5% * var(--val));
+	background-color: white;
+	border: 1px solid black;	
+}

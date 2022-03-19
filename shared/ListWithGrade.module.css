@@ -1,0 +1,25 @@
+.grid{
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+}
+
+.name{
+	align-self: center;
+}
+
+.grade{
+	text-align: end;
+}
+.gradeName{
+	color: gray;
+	font-size: small;
+	font-style: italic;
+}
+
+.line{
+	grid-column: 1/-1;
+  height: 1px;
+  background: rgb(134, 134, 134);
+	width: 95%;
+	justify-self: center;
+}

@@ -1,6 +1,5 @@
 import css from './ArrayVisual.module.css'
-import { useState, useReducer } from 'react';
-import { useEffect } from 'react/cjs/react.production.min';
+import { useState, useEffect } from 'react';
 
 function defaultArray() {
 	return Array.from({ length: 20 }, (_, i) => i + 1)
@@ -16,6 +15,7 @@ function useOrdering() {
 
 		let index = 0;
 		let swapped = false;
+		let arrayLen = array.length;
 		let int = setInterval(() => {
 			if (array[index - 1]) {
 				array[index - 1].color = "white"
@@ -30,10 +30,11 @@ function useOrdering() {
 			}
 			setArray([...array])
 			index++;
-			if (index >= array.length - 1) {
+			if (index >= arrayLen - 1) {
 				array[index].color = "white"
 				array[index - 1].color = "white"
 				index = 0
+				arrayLen = arrayLen - 1;
 				setArray([...array])
 
 				if (!swapped) {
